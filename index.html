@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mah� (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+  <head>
+    <title>Symfony2</title>
+
+    <meta charset='utf-8'>
+    <script src='./scripts/slides.js'></script> 
+    <script src='./scripts/prettify.js'></script>
+    
+  </head>
+
+  <body style="display: none;">
+
+    <section class='slides layout-regular template-default'>
+      <article>
+			<h1>
+			  Symfony2
+			</h1>
+			<p>Mateusz Angulski</p>
+			<p>25 luty 2012</p>
+      </article>
+        
+	 <article>
+		<h3>Symfony2, nie Symfony 2</h3>
+			<p><img style="border: 3px solid #BEBEBE; position: absolute; top: 150px; right: 200px;" src="./images/why.jpg" /></p>
+			<div class="source">Source: http://butterfly88.blog.com/tag/why/</div>
+	 </article>
+	 
+	 <article>
+		<h3>Podstawy</h3>
+			<ul class="build">
+				<li>Framework aplikacji internetowych</li>
+    			<li>Wymagany PHP >= 5.3.2</li>
+    			<li>Obiektowość</li>
+    			<li>SOA</li>
+				<li>Stworzony przez grupę web developerów z SensioLabs</li>
+				<li>Oczywiście Open Source "MIT"</li>
+			</ul>
+	 </article>
+	 
+	 <article>
+		<h3>Dlaczego akurat Symfony2 ?</h3>
+		<p><strong>Pare podstawowych powodów</strong></p>
+		<ul class="build">
+			<li>Rozwijany przez profesjonalistów od 2009 roku</li>
+			<li>Szybki</li>
+			<li>Rozszerzalny</li>
+            <li>Elastyczny</li>				
+			<li>Ma ogromną dokumentację</li>
+			<li>Testowalny</li>
+		</ul>
+	 </article>
+	 
+	 <article>
+	 <img style="position: absolute; top: 125px; right: 100px;
+    transform: rotate(230deg);
+   -moz-transform: rotate(230deg);
+   -webkit-transform: rotate(230deg);
+	 " src="./images/bug.png" />
+	 <p><strong>Przykładowy test fukcjonalny:</strong></p>
+	    <pre>
+namespace Company\MyBundle\Tests\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+
+class DefaultControllerTest extends WebTestCase
+{
+    public function testIndex()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/my/name/Tom');
+        $this->assertTrue($crawler->filter(
+            'html:contains("Your Name is Tom")')->count() > 0);
+    }
+}
+	    </pre>
+	 </article>
+
+	 <article>
+		<h3>Bardziej techniczne zalety</h3>
+		<ul class="build">
+    		<li>Service oriented architecture (SOA)</li>
+            <li>Kontener Dependency Injection</li>
+            <li>Event Listener</li>
+			<li>Komponent Security</li>
+			<li>Środowiska developerskie i testowe</li>			
+ 			<li>Web Debug Toolbar</li>
+ 			<li>Web Profiler</li>
+            <li>Generator kodu</li>
+		</ul>
+	 </article>
+	 
+	 <article>
+	 <pre>
+use Company\DefaultBundle\Mailer;
+
+$mailer = new Mailer('sendmail');
+$mailer->send('tom@meetphp.pl', '...' );
+     </pre>
+     <p>Powiedzmy, że mamy podobne wywołania rozporoszone po całym projekcie i chcemy teraz zmienić sendmaila na coś innego.</p>
+	 </article>
+	 
+	 <article>
+	 <p><strong>Najlepiej wytłumaczyć kontenerowi co ma robić jak ktoś potrzebuje mailera</strong></p>
+	 <pre>
+services:
+    fancy_mailer:
+        class:        Company\DefaultBundle\Mailer
+        arguments:    [sendmail]
+     </pre>
+     <p>I to wystarczy !</p>
+	 </article>
+	 
+	 <article>
+	 <p><strong>Teraz jeśli potrzebujesz skorzystać z obiektu (serwisu) mailera wystarczy</strong></p>
+	 <pre>
+class DefaultController extends Controller
+{
+    public function sendAction()
+    {
+        $mailer = $this->get('fancy_mailer');
+        $mailer->send('admin@meetphp.pl', '...' );
+    }
+}
+     </pre>
+     <p>W dowolnym kontrolerze dziedziczącym po standardowej klasie kontrolera</p>
+	 </article>
+	 
+	 <article>
+	 <p><strong>Przykładowy EventSubscriber</strong></p>
+	 <pre>
+namespace Company\LibraryBundle\Event;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+
+class BorrowSubscriber implements EventSubscriberInterface
+{
+    static public function getSubscribedEvents()
+    {
+        return array(
+            'kernel.response' => 'onKernelResponse',
+            'store.order'     => 'onBorrowedOrder',
+        );
+    }
+    public function onKernelResponse(FilterResponseEvent $event) {...}
+    public function onStoreOrder(FilterOrderEvent $event) {...}
+}
+     </pre>
+	 </article>
+	 
+	 <article>
+	 <p><strong>... i jego rejestracja</strong></p>
+	 <pre>
+use Company\LibrabryBundle\Event\BorrowSubscriber;
+
+$subscriber = new BorrowSubscriber();
+$dispatcher->addSubscriber($subscriber);
+     </pre>
+	 </article>
+	 	 
+	 <article>
+            <h1>
+			  Architektura
+			</h1>
+	 </article>
+	 
+	 <article>
+	    <h3>Struktura katalogów jest dowolna, ale w dystrybucji <i>Standard Edition</i> rekomendowany jest następujący układ</h3>
+        <div style="margin-left:20px; color:black; margin-top:20px;">
+            app/ - konfiguracja aplikacji<br>
+            src/ - bundle<br>
+            vendor/ - biblioteki zewnętrzne<br>
+            web/ - główny katalog aplikacji<br>
+        </div>
+	 </article>
+	 
+	 <article>
+        <h3>System bundli</h3>
+        <p><strong>Etapy powstawania bundla</strong></p>
+        <ul class="build">
+    		<li>Rejestracja Bundla</li>
+    		<li>Konfiguracja Bundla</li>
+    		<li>Konfiguracja routingu</li>
+    	</ul>
+	 </article>
+	 
+    <article>
+        <h3>System bundli</h3>
+        <p><strong>Struktura plików zgodna z dobrymi praktykami</strong></p>
+        <div style="margin-left:20px; color:black; margin-top:20px;">
+ZOO/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MeetPhpBundle/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MeetPhpBundle.php</b></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Controller/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meta/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LICENSE</b></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>index.rst</b></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;translations/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;views/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public/</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tests/</br>
+            </div>
+    </article>
+
+    <article>
+        <h3>Przykładowy szblon w twiga</h3>
+  		<pre>    
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;My Webpage&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul id="navigation"&gt;
+        {% for item in navigation %}
+            &lt;li&gt;&lt;a href="{{ item.href }}"&gt;{{ item.caption }}&lt;/a&gt;&lt;/li&gt;
+        {% endfor %}
+        &lt;/ul&gt;
+
+        &lt;h1&gt;My Webpage&lt;/h1&gt;
+        {{ a_variable }}
+    &lt;/body&gt;
+&lt;/html&gt;
+        </pre>
+    </article>
+
+    <article>
+        <h3>System bundli</h3>
+<p>Logiczna ścieżka do pliku bundla</p>
+  		<pre>
+@CompanyLibrabryBundle/Controller/DefaultController.php
+        </pre>
+<span>odpowiada</span>
+  		<pre>
+src/Company/LibrabryBundle/Controller/DefaultController.php
+        </pre>
+	 </article>
+	 
+	 <article>
+        <h3>System bundli</h3>
+<p>Logiczna ścieżka do metody kontrolera</p>
+  		<pre>
+CompanyLibrabryBundle:Default:index
+        </pre>
+<span>odpowiada</span>
+  		<pre>
+Company\LibrabryBundle\Controller\DefaultController::indexAction()
+        </pre>
+	 </article>
+	 
+	 <article>
+        <h3>System bundli</h3>
+<p>Logiczna ścieżka do templatki twigowej</p>
+  		<pre>
+CompanyLibrabryBundle:Borrow:index.html.twig
+        </pre>
+<span>odpowiada</span>
+  		<pre>
+src/Company/LibraryBundle/Resources/views/Borrow/index.html.twig 
+	    </pre>
+	 </article>
+	 
+	 <article>
+	    <h3>Konsola</h3>
+        <p><strong>Przykładowe polecenia</strong></p>
+        <pre>
+        php app/console cache:clear
+        </pre>
+        <pre>
+        php app/console router:debug -env=prod --no-debug
+        </pre>
+        <pre>
+        php app/console generate:bundle
+        </pre>
+	 </article>
+	 
+	 <article>
+	    <h1>Koniec ględzenia</h1>
+	    <p>Zabieramy się za uruchomienie prostej aplikacji</p>
+	 </article>
+	 
+     <article>
+	    <h3>Przydatne linki</h3>
+	    <p>
+        <a href="http://symfony.com/">http://symfony.com/</a>
+        </p>
+        <p>
+            <a href="http://www.joelverhagen.com/blog/2011/05/how-to-configure-symfony-2-0-on-ubuntu-server-2011-4/">http://www.joelverhagen.com/blog/2011/05/how-to-configure-symfony-2-0-on-ubuntu-server-2011-4/</a>
+        </p>
+<p>
+    <a href="http://components.symfony-project.org/">http://components.symfony-project.org/</a>
+</p>
+    <p>
+        <a href="http://symfony.com/doc/current/reference/requirements.html">http://symfony.com/doc/current/reference/requirements.html</a>
+    </p>
+	 </article>
+	 
+	 <article>
+	    <h1>Dzięki za wysłuchanie <div style="position: absolute; top: 242px; left:700px;
+   transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -webkit-transform: rotate(90deg);
+   font-size: 100px;
+	    ">:-]</div></h1>
+	 </article>
+	 
+    </section>
+	</body>
+</html>
