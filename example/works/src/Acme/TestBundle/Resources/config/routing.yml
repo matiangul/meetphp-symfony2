@@ -1,0 +1,6 @@
+acme_test_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeTestBundle:Default:index }
+_test_post:
+    resource: "@AcmeTestBundle/Controller/PostController.php"
+    type:     annotation
