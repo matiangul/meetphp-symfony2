@@ -1,0 +1,345 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"canvas",
+				"canvasParent"
+			],
+			[
+				"can",
+				"canvas"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"if",
+				"ife	if … else"
+			],
+			[
+				"da",
+				"dataSet"
+			],
+			[
+				"wha",
+				"whatDataSets"
+			],
+			[
+				"rando",
+				"randomDataSet"
+			],
+			[
+				"groupe",
+				"groupedAll"
+			],
+			[
+				"date",
+				"datasetMe"
+			],
+			[
+				"data",
+				"datasetAll"
+			],
+			[
+				"my",
+				"myctx2"
+			],
+			[
+				"myc",
+				"myctx1"
+			],
+			[
+				"hash",
+				"hashchange"
+			],
+			[
+				"do",
+				"document"
+			],
+			[
+				"draw",
+				"drawChart"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"time",
+				"timestamp"
+			],
+			[
+				"Valid",
+				"ValidatorException"
+			],
+			[
+				"se",
+				"section"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssjs",
+				"Set Syntax: JavaScript"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Software/wamp/www/json-parse-apple/app/scripts/main.js",
+		"/C/Software/wamp/www/json-parse-apple/app/styles/main.css",
+		"/C/Software/wamp/www/json-parse-apple/app/index.html",
+		"/C/Software/wamp/www/json-parse-apple/cgi/public/index.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/public/routes.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/public/repository.php",
+		"/C/Software/wamp/www/json-parse-apple/Gruntfile.js",
+		"/C/Software/wamp/www/json-parse-apple/app/scripts/debug.js",
+		"/C/Software/wamp/www/json-parse-apple/cgi/tests/repositorytest.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/composer.json",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/autoload.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/composer/autoload_classmap.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/composer/autoload_real.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/composer/ClassLoader.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/composer/include_paths.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/composer/installed.json",
+		"/C/Software/wamp/www/json-parse-apple/cgi/phpunit.dist.xml",
+		"/C/Software/wamp/www/json-parse-apple/cgi/composer.lock",
+		"/C/Software/Cygwin/home/Mateusz/.bashrc",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/bin/phpunit",
+		"/C/Software/wamp/www/json-parse-apple/cgi/repositorytest.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/public/model.php",
+		"/C/Users/Mateusz/AppData/Roaming/Sublime Text 2/Packages/HTML/HTML.tmLanguage",
+		"/C/Software/wamp/www/json-parse-apple/app/scripts/vendors/D.min.js",
+		"/C/Software/wamp/www/json-parse-apple/bower.json",
+		"/C/Software/wamp/www/json-parse-apple/dist/scripts/96a43da4.vendors.js",
+		"/C/Software/wamp/www/json-parse-apple/dist/scripts/d35b9c5e.main.js",
+		"/C/Software/wamp/www/json-parse-apple/app/bower_components/quojs/.bower.json",
+		"/C/Software/wamp/www/json-parse-apple/.bowerrc",
+		"/C/Software/wamp/www/json-parse-apple/.gitattributes",
+		"/C/Software/wamp/www/json-parse-apple/.jshintrc",
+		"/C/Software/wamp/www/json-parse-apple/.gitignore",
+		"/C/Software/wamp/www/json-parse-apple/.editorconfig",
+		"/C/Software/wamp/www/json-parse-apple/cgi/sql/sample_data.sql",
+		"/C/Software/wamp/www/json-parse-apple/cgi/sql/schema.sql",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/vrana/notorm/NotORM/Row.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/vrana/notorm/NotORM/Result.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/vendor/vrana/notorm/composer.json",
+		"/C/Users/Mateusz/Downloads/efektywnosc.json",
+		"/C/Software/wamp/www/json-parse-apple/cgi/public/.htaccess",
+		"/C/Software/wamp/www/json-parse-apple/app/styles/default.css",
+		"/C/Software/wamp/www/json-parse-apple/app/styles/component.css",
+		"/C/Software/wamp/www/json-parse-apple/cgi/web/dispatch.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/views/rel-table.html",
+		"/C/Software/wamp/www/json-parse-apple/cgi/views/databases.html",
+		"/C/Software/wamp/www/json-parse-apple/cgi/src/Base.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/src/Databases.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/src/Rel.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/src/Table.php",
+		"/C/Software/wamp/www/json-parse-apple/cgi/src/Tables.php",
+		"/C/Software/wamp/www/json-parse-apple/.tmp/styles/component.css",
+		"/home/mati/www/json-parse-apple/app/scripts/cbpHorizontalSlideOutMenu.js",
+		"/home/mati/www/json-parse-apple/tmp/index.html",
+		"/home/mati/www/json-parse-apple/app/scripts/main.js",
+		"/home/mati/www/json-parse-apple/app/styles/main.css",
+		"/home/mati/www/json-parse-apple/app/scripts/modernizr.custom.js",
+		"/home/mati/.config/sublime-text-2/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<project>",
+			"C:\\Software\\wamp\\www\\json-parse-apple"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"imagesDir",
+			"images",
+			".Bar({",
+			"editHeader",
+			"canvasContext",
+			"console.log(",
+			"chartOptions(",
+			"chartOptions",
+			"Bar(",
+			"Bar.",
+			"Bar",
+			"chartOptions",
+			"Bar",
+			"id=",
+			"var_d",
+			"/cgi/public",
+			"script",
+			"debug",
+			"bower_compo",
+			"menu",
+			"tests",
+			"die;",
+			"die",
+			"var_dump",
+			"->row",
+			"insert_multi",
+			"var_dump",
+			"insert_",
+			"die",
+			"var_",
+			"LAto",
+			"bpicons",
+			"bpmenu",
+			"cbp-hssubmenu",
+			"cbp-hssub-rows",
+			"rows",
+			"cbp-hssub",
+			"cbp-hssub-",
+			"cbp-hssub-rows",
+			"../",
+			"width",
+			"size",
+			"window"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"context",
+			"class=",
+			"http://localhost/json-parse-apple/cgi/public"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"repos",
+				"cgi/public/repository.php"
+			],
+			[
+				"compo",
+				"cgi/composer.json"
+			],
+			[
+				"defa",
+				"app/styles/default.css"
+			],
+			[
+				".css",
+				".tmp/styles/component.css"
+			],
+			[
+				"cbphorizontalslideoutmenu",
+				"app/scripts/cbpHorizontalSlideOutMenu.js"
+			],
+			[
+				"cbp",
+				"app/scripts/cbpHorizontalSlideOutMenu.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 237.0,
+	"status_bar_visible": true
+}
